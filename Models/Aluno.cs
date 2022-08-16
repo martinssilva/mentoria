@@ -14,6 +14,8 @@ namespace Blog.Models
         public string Nome { get; set; }
         public string Email { get; set; }
         public string CPF { get; set; }
+        
+        [Write(false)]
         public DateTime DataCriacao { get; set; }
 
         [Write(false)]

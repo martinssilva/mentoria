@@ -16,6 +16,19 @@ namespace Blog.Repositories
         : base(connection)
             => _connection = connection;
 
+        public Aluno GetWithCPF(string cpf)
+        {
+            var query = @$"
+            SELECT [Id], [Nome], [Email], [CPF] 
+            FROM [Aluno]
+            WHERE [CPF] = '{cpf}'";
+
+            var alunos = new Aluno();
+
+            var items = _connection.QueryFirstOrDefault(query, new {CPF = cpf}); 
+
+            return alunos;
+        }
         public List<Aluno> GetWithCursos()
         {
             var query = @"
